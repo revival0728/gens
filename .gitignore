@@ -2,6 +2,6 @@
 *.py~
 *.txt~
 *.gitignore~
-guide\*.un~
-guide\*.py~
-guide\*.txt~
+guide\\*.un~
+guide\\*.py~
+guide\\*.txt~
