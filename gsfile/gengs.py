@@ -23,22 +23,26 @@ if fn == "" or addr == "":
     print("Wrong Command")
     quit()
 
-source = open(addr+"\\"+fn, "w")
-dfc = open("defaultcode.txt", "r")
+try:
+    source = open(addr+"\\"+fn, "w")
+    dfc = open("defaultcode.txt", "r")
 
-_fn = ""
+    _fn = ""
 
-if fn.find(".") == -1:
-    print("Missing file extension")
-    quit()
-else:
-    _fn = fn[:fn.find(".")]
+    if fn.find(".") == -1:
+        print("Missing file extension")
+        quit()
+    else:
+        _fn = fn[:fn.find(".")]
 
-for i in dfc.readlines():
-    s = i
-    s = s.replace("\r", "")
-    if not s.find("*FILENAME*") == -1:
-        s = s.replace("*FILENAME*", _fn)
-    source.write(s)
+    for i in dfc.readlines():
+        s = i
+        s = s.replace("\r", "")
+        if not s.find("*FILENAME*") == -1:
+            s = s.replace("*FILENAME*", _fn)
+        source.write(s)
 
-source.close()
+    source.close()
+
+except:
+    print("Address not found")
