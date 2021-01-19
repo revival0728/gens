@@ -1,0 +1,2 @@
+if *FILENAME* is in  your defaultcode.txt
+than it will be replaced by filename
