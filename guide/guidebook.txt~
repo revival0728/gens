@@ -1,8 +1,0 @@
-commands     -w <website> -p <problemid>			 // gen and dl file
-             -h									 // output guidebook.txt
-             -scgs 								 // save changes
-             -upddc <file> 						 // update default code
-             -newdlt "<file> <file address>" 		 // add new download tool
-             -newply "<command file> <plugin file>" // add new plugin
-             -settrf 								 // set target file
-
