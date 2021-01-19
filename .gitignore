@@ -1,6 +1,7 @@
 *.un~
 *.py~
 *.txt~
+*.gitignore~
 guide/*.un~
 guide/*.py~
 guide/*.txt~
