@@ -17,5 +17,6 @@ int main() {
 
 #ifndef fileio
 	freopen("*FILENAME*_in.txt", "r", stdin), freopen("*FILENAME*_out.txt", "w", stdout);
+#endif
 	solve();
 }
