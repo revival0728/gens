@@ -11,12 +11,16 @@ import os
 import sys
 import getopt
 
-erropt = "Unknown Command"
+erropt = "Unknown Command use -h or --help to look up the guidebook"
 commands = "hsw:p:u:d:g:f:"
 command_list = ["help", "scgs", "web=", "pid=", "upddc=", "newdlt=", "newply=", "settrf="]
 
 try:
     opts, args = getopt.getopt(sys.argv[1:], commands, command_list)
+
+    if opts == []:
+        print(erropt)
+        quit()
 
     web = ""
     pid = ""

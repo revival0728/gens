@@ -45,7 +45,7 @@ def gengs(fn, addr):
         for i in dfc.readlines():
             s = i.replace("\r", "")
             
-            if s.strip() == "" and is_code:
+            if s.strip() == "" and isnot_code:
                 continue
 
             isnot_code = False
