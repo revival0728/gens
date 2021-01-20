@@ -1,4 +1,4 @@
-#this file will return dlweblist.txt in format dict{[...], [...], ...]} // "webname", "url", "filename"
+#this file will return dlweblist.txt in format [{dict},{dict}, ...] // "webname", "url", "filename"
 
 import os
 import sys
