@@ -3,46 +3,69 @@
 import os
 import sys
 import getopt
+from lib import compiler
 
-fn = ""
-addr = ""
+def gengs(fn, addr):
 
-try:
-    opts, args = getopt.getopt(sys.argv[1:], "n:a:", ["filename=", "address="])
-    for k, v in opts:
-        if k == "-n":
-            fn = v
-        elif k == "-a":
-            addr = v
+    if fn == "" or addr == "":
+        print("Wrong Command")
+        quit()
 
-except getopt.GetoptError:
-    print("Something Went Wrong")
-    quit()
-
-if fn == "" or addr == "":
-    print("Wrong Command")
-    quit()
-
-try:
-    source = open(addr+"\\"+fn, "w")
     dfc = open("defaultcode.txt", "r")
 
-    _fn = ""
+    try:
 
-    if fn.find(".") == -1:
-        print("Missing file extension")
+        ext = ""
+        
+        while ext == "":
+            s = dfc.readline()
+            ret = compiler.compiler(s)
+            if not type(ret) == tuple:
+                continue
+            elif ret[1]:
+                ext = ret[0]
+
+        _fn = ""
+
+        if fn.find(".") == -1:
+            fn += ext
+
+        if fn.find(".") == -1:
+            print("Missing file extension")
+            quit()
+        else:
+            _fn = fn[:fn.find(".")]
+        
+        source = open(addr+"\\"+fn, "w")
+
+        print("generating {} source file ... ".format(fn))
+
+        for i in dfc.readlines():
+            s = i.replace("\r", "")
+            
+            if s.strip() == "":
+                continue
+
+            s = compiler.compiler(s, fn = _fn)
+            source.write(s)
+
+        source.close()
+    except:
+        print("Address not found")
         quit()
-    else:
-        _fn = fn[:fn.find(".")]
 
-    for i in dfc.readlines():
-        s = i
-        s = s.replace("\r", "")
-        if not s.find("*FILENAME*") == -1:
-            s = s.replace("*FILENAME*", _fn)
-        source.write(s)
+if __name__ == "__main__":
+    try:
+        fn = ""
+        addr = ""
+        opts, args = getopt.getopt(sys.argv[1:], "n:a:", ["filename=", "address="])
+        for k, v in opts:
+            if k == "-n":
+                fn = v
+            elif k == "-a":
+                addr = v
+        gengs(fn, addr)
 
-    source.close()
-
-except:
-    print("Address not found")
+    except getopt.GetoptError:
+        print("Unknown Command")
+        quit()

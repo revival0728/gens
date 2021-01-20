@@ -1,8 +1,8 @@
-commands     -w <website> -p <problemid> // gen and dl file
-             -h	// output guidebook.txt
-             -scgs // save changes
-             -upddc <file> // update default code
-             -newdlt "<file> <file address>" // add new download tool
-             -newply "<command file> <plugin file>" // add new plugin
-             -settrf // set target file
+commands     -w | --web <website> -p | --pid <problemid> // gen and dl file
+             -h	| --help // output guidebook.txt
+             -s | --scgs // save changes
+             -u | --upddc <file> // update default code
+             -d | --newdlt "<file name> <file address>" // add new download tool
+             -g | --newply "<command file> <plugin file>" // add new plugin
+             -f | --settrf // set target file
 

@@ -1,43 +1,45 @@
 #this file is for user (loby)
-#with command -w -p
-#             -h
-#             -scgs //save_changes
-#             -upddc //update_default_code
-#             -newdlt //add_new_download_tool
-#             -newply //add_new_plugin
-#             -settrf // set_target_file
+#commands     -w | --web <website> -p | --pid <problemid> // gen and dl file
+#             -h | --help // output guidebook.txt
+#             -s | --scgs // save changes
+#             -u | --upddc <file> // update default code
+#             -d | --newdlt "<file> <file address>" // add new download tool
+#             -g | --newply "<command file> <plugin file>" // add new plugin
+#             -f | --settrf // set target file
 
 import os
 import sys
 import getopt
 
 erropt = "Unknown Command"
-commands = "hw:p:scgs:upddc:newdlt:newply:settrf:"
-command_list = ["help", "website=", "problemid=", "upd_default_code=", "new_download_tool=", "new_plugin=", "set_target_file="]
-option = {
-        "-w" : "",
-        "-p" : "",
-        "-upddc" : "",
-        "-newdlt" : [],
-        "-newply" : [],
-        "-settrf" : ""
-        }
+commands = "hsw:p:u:d:g:f:"
+command_list = ["help", "scgs", "web=", "pid=", "upddc=", "newdlt=", "newply=", "settrf="]
 
 try:
     opts, args = getopt.getopt(sys.argv[1:], commands, command_list)
 
+    web = ""
+    pid = ""
+
     for k, v in opts:
-        if k == "-h":
-            guide = open(".\\guide\\guidebook.txt")
+        if k in ("-h", "--help"):
+            guide = open("guide\\guidebook.txt")
             for i in guide.readlines():
-                print(i)
-        elif not k in option:
-            print(erropt)
-            quit()
-        elif not k.find(" ") == -1:
-            option[k] = list(v.split())
-        else:
-            option[k] = v
+                print(i.replace("\r", ""))
+        elif k in ("-s", "--scgs"):
+            pass
+        elif k in ("-w", "--web"):
+            web = v
+        elif k in ("-p", "--pid"):
+            pid = v
+        elif k in ("-u", "--upddc"):
+            pass
+        elif k in ("-d", "--newdlt"):
+            pass
+        elif k in ("-g", "--newply"):
+            pass
+        elif k in ("-f", "--settrf"):
+            pass
 
 except getopt.GetoptError:
     print(erropt)

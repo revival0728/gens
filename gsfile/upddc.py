@@ -4,26 +4,31 @@ import os
 import sys
 import getopt
 
-addr = ""
 
-try:
-    opts, args = getopt.getopt(sys.argv[1:], "a:", ["address="])
-    for k, v in opts:
-        if k == "-a":
-            addr = v.replace("\\", "\\\\")
+def upddc(addr):
+    if addr == "":
+        print("Address is empty")
 
-except getopt.GetoptError:
-    print("Something Wrong")
-    quit()
+    try:
+        ndc = open(addr, "r")
+        dc = open("defaultcode.txt", "w")
+        for i in ndc.readlines():
+            dc.write(i.replace("\r", ""))
+        dc.close()
 
-if addr == "":
-    print("Address is empty")
+    except:
+        print("File not found")
 
-try:
-    ndc = open(addr, "r")
-    dc = open("defaultcode.txt", "w")
-    for i in ndc.readlines():
-        dc.write(i.replace("\r", ""))
+if __name__ == "__main__":
 
-except:
-    print("File not found")
+    addr = ""
+    try:
+        opts, args = getopt.getopt(sys.argv[1:], "a:", ["address="])
+        for k, v in opts:
+            if k == "-a":
+                addr = v.replace("\\", "\\\\")
+        upddc(addr)
+
+    except getopt.GetoptError:
+        print("Something Wrong")
+        quit()

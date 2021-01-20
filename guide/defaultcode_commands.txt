@@ -1,0 +1,2 @@
+*FILENAME* will be replaced by filename
+*FILEEXT* will let the program know which language is in defaultcode.txt
