@@ -40,11 +40,15 @@ def gengs(fn, addr):
 
         print("generating {} source file ... ".format(fn))
 
+        isnot_code = True
+
         for i in dfc.readlines():
             s = i.replace("\r", "")
             
-            if s.strip() == "":
+            if s.strip() == "" and is_code:
                 continue
+
+            isnot_code = False
 
             s = compiler.compiler(s, fn = _fn)
             source.write(s)
