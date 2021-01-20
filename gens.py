@@ -5,7 +5,7 @@
 #             -u | --upddc <file> // update default code
 #             -d | --newdlt "<file> <file address>" // add new download tool
 #             -g | --newply "<command file> <plugin file>" // add new plugin
-#             -f | --settrf // set target file
+#             -f | --settrf <folder> // set target folder
 
 import os
 import sys
