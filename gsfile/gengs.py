@@ -6,12 +6,14 @@ import getopt
 from lib import compiler
 
 def gengs(fn, addr):
+    path = os.path.abspath(__file__)
+    path = path[:-8]
 
     if fn == "" or addr == "":
         print("Wrong Command")
         quit()
 
-    dfc = open("defaultcode.txt", "r")
+    dfc = open(path+"\\"+"defaultcode.txt", "r")
 
     try:
 

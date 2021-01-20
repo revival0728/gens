@@ -1,9 +1,6 @@
 import requests as rqs
 from bs4 import BeautifulSoup as bsp
 
-#f = open("out.txt", mode = "w")
-
-
 def get_dj(url):
 
     res = rqs.get(url)
@@ -25,6 +22,3 @@ def get_dj(url):
 if __name__ == "__main__":
     url = input()
     get_tsdata(url)
-
-
-#f.close()

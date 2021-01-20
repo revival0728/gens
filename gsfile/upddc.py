@@ -4,14 +4,16 @@ import os
 import sys
 import getopt
 
-
 def upddc(addr):
+    path = os.path.abspath(__file__)
+    path = path[:-8]
+
     if addr == "":
         print("Address is empty")
 
     try:
         ndc = open(addr, "r")
-        dc = open("defaultcode.txt", "w")
+        dc = open(path+"\\"+"defaultcode.txt", "w")
         for i in ndc.readlines():
             dc.write(i.replace("\r", ""))
         dc.close()
