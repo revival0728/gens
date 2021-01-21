@@ -3,7 +3,7 @@
 import os
 import sys
 import getopt
-from lib import compiler
+from ..lib import compiler
 
 def gengs(fn, addr):
     path = os.path.abspath(__file__)
