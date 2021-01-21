@@ -10,6 +10,7 @@
 import os
 import sys
 import getopt
+from modules import guides
 
 erropt = "Unknown Command use -h or --help to look up the guidebook"
 commands = "hsw:p:u:d:g:f:"
@@ -27,9 +28,7 @@ try:
 
     for k, v in opts:
         if k in ("-h", "--help"):
-            guide = open("guide\\guidebook.txt")
-            for i in guide.readlines():
-                print(i.replace("\r", ""))
+            guides.guides()
         elif k in ("-s", "--scgs"):
             pass
         elif k in ("-w", "--web"):
