@@ -1,16 +1,27 @@
 #this file is the main code of this project
 
-from gsfile import lib
+import os
 from gsfile import gengs
 from dltsda import get_dls
+from lib import compiler
 
 def engin(web, pid):
+    path = os.path.abspath(__file__)
+    path = path[:-8]
+
     if web == "" or pid == "":
         print("Wrong Command use -h or --help to look up the guidebook")
         quit()
 
+    gengs.gengs(pid, ".")
     weblist = get_dls.get_dls()
-    print(weblist)
+
+    fcode = open(path+"\\"+"enginC\\code.txt")
+    code = ""
+    for i in fcode.readlines():
+        code += i.replace("\r", "")
+    print(compiler.compiler(code, webname = web, functionname = weblist[0]["filename"][:-3]))
+    #pid[:-3] -> test.py -> test
 
 if __name__ == "__main__":
     import getopt

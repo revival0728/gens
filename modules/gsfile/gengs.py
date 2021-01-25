@@ -3,7 +3,7 @@
 import os
 import sys
 import getopt
-from ..lib import compiler
+from lib import compiler
 
 def gengs(fn, addr):
     path = os.path.abspath(__file__)
@@ -15,50 +15,50 @@ def gengs(fn, addr):
 
     dfc = open(path+"\\"+"defaultcode.txt", "r")
 
-    try:
+   # try:
 
-        ext = ""
-        
-        while ext == "":
-            s = dfc.readline()
-            ret = compiler.compiler(s)
-            if not type(ret) == tuple:
-                continue
-            elif ret[1]:
-                ext = ret[0]
+    ext = ""
+    
+    while ext == "":
+        s = dfc.readline()
+        ret = compiler.compiler(s)
+        if not type(ret) == tuple:
+            continue
+        elif ret[1]:
+            ext = ret[0]
 
-        _fn = ""
+    _fn = ""
 
-        if fn.find(".") == -1:
-            fn += ext
+    if fn.find(".") == -1:
+        fn += ext
 
-        if fn.find(".") == -1:
-            print("Missing file extension")
-            quit()
-        else:
-            _fn = fn[:fn.find(".")]
-        
-        source = open(addr+"\\"+fn, "w")
-
-        print("generating {} source file ... ".format(fn))
-
-        isnot_code = True
-
-        for i in dfc.readlines():
-            s = i.replace("\r", "")
-            
-            if s.strip() == "" and isnot_code:
-                continue
-
-            isnot_code = False
-
-            s = compiler.compiler(s, fn = _fn)
-            source.write(s)
-
-        source.close()
-    except:
-        print("Address not found")
+    if fn.find(".") == -1:
+        print("Missing file extension")
         quit()
+    else:
+        _fn = fn[:fn.find(".")]
+    
+    source = open(addr+"\\"+fn, "w")
+
+    print("generating {} source file ... ".format(fn))
+
+    isnot_code = True
+
+    for i in dfc.readlines():
+        s = i.replace("\r", "")
+        
+        if s.strip() == "" and isnot_code:
+            continue
+
+        isnot_code = False
+
+        s = compiler.compiler(s, filename = _fn)
+        source.write(s)
+
+    source.close()
+   # except:
+   #     print("Address not found")
+   #     quit()
 
 if __name__ == "__main__":
     try:
