@@ -10,9 +10,12 @@ def get_dls():
     for s in weblist.readlines():
         d = {}
         tmp = s.split()
+        
         d.update({"webname" : tmp[0]})
         d.update({"url" : tmp[1]})
         d.update({"filename" : tmp[2]})
         ret.append(d)
-
+        
+    weblist.close()
+    
     return ret
