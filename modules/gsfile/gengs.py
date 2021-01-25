@@ -6,8 +6,7 @@ import getopt
 from ..lib import compiler
 
 def gengs(fn, addr):
-    path = os.path.abspath(__file__)
-    path = path[:-8]
+    path = os.path.abspath(__package__)
 
     if fn == "" or addr == "":
         print("Wrong Command")
