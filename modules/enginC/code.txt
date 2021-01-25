@@ -1,0 +1,3 @@
+import *FUCNAME*
+if web == *WEBNAME*:
+    test_input, test_output = *FUCNAME*.*FUCNAME*()
