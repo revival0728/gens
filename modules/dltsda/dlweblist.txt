@@ -1,1 +1,2 @@
 dj http://dandanjudge.fdhs.tyc.edu.tw/ShowProblem?problemid= get_dj.py
+zj https://zerojudge.tw/ShowProblem?problemid= get_zj.py
