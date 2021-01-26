@@ -1,3 +1,5 @@
-import *FUCNAME*
-if web == *WEBNAME*:
-    test_input, test_output = *FUCNAME*.*FUCNAME*()
+from dltsda import *FUCNAME*
+if web == "*WEBNAME*":
+    test_input, test_output = *FUCNAME*.*FUCNAME*("*URL*")
+
+print(test_input, test_output)
